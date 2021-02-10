@@ -1,12 +1,5 @@
-fruits = ["apple", "banana", "peach", "pear", "plum", "orange"]
-counter = 0
+name = input("Input your name: ")
+age = input("Input your age: ")
 
-while counter < len(fruits):
-    if fruits[counter] == "banana":
-        counter += 1
-        continue
-
-    print(fruits[counter])
-    counter += 1
-
-print("Iteration completed")
+print("Your name is %s" % name)
+print("You are %s years old" % age)
