@@ -1,5 +1,6 @@
-my_B = True
+languages = ["HTML", "CSS", "JavaScript"]
+for language in languages:
+    print(language)
 
-my_S = "Hello" if my_B else "World"
-
-print(my_S)
+for character in "Python":
+    print(character)
