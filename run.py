@@ -1,18 +1,47 @@
-# this function runs for the name and age function calls
-def get_user_input(prompt):
-    return input(prompt)
+from random import randint
 
 
-# this function runs twice
-def print_out_to_console(value_to_be_printed):
-    print(value_to_be_printed)
+def compare(user, computer):
+    if user.lower() == computer.lower():
+        print("It's a tie!")
+    elif user.lower() == 'rock':
+        if computer.lower() == 'scissors':
+            print("You win")
+        else:
+            print("Computer wins")
+    elif user.lower() == 'scissors':
+        if computer.lower() == 'paper':
+            print("You win")
+        else:
+            print("Computer wins")
+    elif user.lower() == 'paper':
+        if computer.lower() == 'rock':
+            print("You win")
+        else:
+            print("Computer wins")
+    else:
+        print("Invalid input. Try again")
 
+def get_computers_choice():
+    choices = ["Rock", "Paper", "Scissors"]
+    choice_index = randint(0, 2)
+    choice = choices[choice_index]
+    return choice
 
-# name and age are the first two function calls to run sequentially
-name = get_user_input("Input your name: ")
-age = get_user_input("Input your age: ")
+def game_loop():
+    play_game = True
 
+    while play_game:
+        user = input("Rock, paper or scissors: ")
+        computer = get_computers_choice()
 
-# Then function calls run sequentoally
-print_out_to_console(f"Your name is {name}")
-print_out_to_console(f"You are {age} years old")
+        victor = compare(user, computer)
+
+        play_again = input("Play again? Y/N: ")
+
+        if play_again.lower() == "n":
+            play_game = False
+
+    print("Thanks for playing")
+
+game_loop()
