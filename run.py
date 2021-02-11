@@ -1,5 +1,11 @@
-my_word = "Hello"
+user = {
+    "username": "tombom",
+    "first": "Tom",
+    "last": "Bom",
+    "age": 100
+}
 
-upper = my_word.upper()
-
-print(upper)
+for key, value in user.items():
+    print(f"key: {key}")
+    print(f"Value: {value}")
+    print("--------------------")
