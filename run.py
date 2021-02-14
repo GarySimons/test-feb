@@ -28,6 +28,7 @@ def contains(root, value):
     else:
         return contains(root.right, value)
 
+
 n1 = Node(value=1, left=None, right=None)
 n3 = Node(value=3, left=None, right=None)
 n2 = Node(value=2, left=n1, right=n3)
