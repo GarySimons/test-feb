@@ -1,11 +1,15 @@
-user = {
-    "username": "tombom",
-    "first": "Tom",
-    "last": "Bom",
-    "age": 100
-}
+from itertools import product
 
-for key, value in user.items():
-    print(f"key: {key}")
-    print(f"Value: {value}")
-    print("--------------------")
+
+class IceCreamMachine:
+
+    def __init__(self, ingredients, toppings):
+        self.ingredients = ingredients
+        self.toppings = toppings
+
+    def scoops(self):
+        return list(product(self.ingredients, self.toppings))
+
+
+machine = IceCreamMachine(["vanilla", "chocolate"], ["chocolate sauce"])
+print(machine.scoops())  # should print[['vanilla', 'chocolate sauce'], ['chocolate', 'chocolate sauce']]
