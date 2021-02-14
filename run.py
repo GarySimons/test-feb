@@ -1,17 +1,17 @@
 """
 10 min
-Implement the unique_names method. When passed two arrays of names, it will
-return an array containing the names that appear in either or both arrays.
-The returned array should have no duplicates.
-For example, calling unique_names(['Ava', 'Emma', 'Olivia'], ['Olivia', 'Sophia', 'Emma'])
-should return an array containing Ava, Emma, Olivia, and Sophia in any order.
-    
+A palindrome is a word that reads the same backward or forward.
+Write a function that checks if a given word is a palindrome. Character case should be ignored.
+For example, is_palindrome("Deleveled") should return True as character case
+should be ignored, resulting in "deleveled", which is a palindrome since it
+reads the same backward and forward.
 """
-from itertools import chain
 
-def unique_names(names1, names2):
-    return list(set(chain(names1, names2)))
+def is_palindrome(word):
+    word = word.lower()
+    half = len(word) // 2
+    m = len(word) % 2
+    return word[:half] == word[:half+m-1:-1]
         
-names1 = ["Ava", "Emma", "Olivia"]
-names2 = ["Olivia", "Sophia", "Emma"]
-print(unique_names(names1, names2)) # should print Ava, Emma, Olivia, Sophia
+
+print(is_palindrome('Deleveled'))
