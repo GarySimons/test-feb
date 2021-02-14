@@ -1,45 +1,41 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Tillo Technical Test
+## Software Engineer - Python
 
-Welcome GarySimons,
+We have supplied you with a barebones Flask api to get you started. Currently there is only one function, if you know an order's ID, you can pass it to the API to fetch details of the order. Using the provided [orders.json](/data/orders.json) file, please address the following requirements.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+### Requirements
 
-## Gitpod Reminders
+You should complete this task using __Python3__ and __Flask__. Should you choose to install additional pip packages please write a short comment to justify why. You can use the provided answers.md file for any supporting material.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+Extend the API to allow users to filter all of the orders using the below GET parameters. It should be capable of handling multiple filters at a time.
 
-`python3 -m http.server`
+| Parameter  | Type   | Description                                                   |
+| :--------- | :----: | :------------------------------------------------------------ |
+| currency   | string | Get all orders that were placed in a currency (GBP, USD, etc) |
+| shipped_to | string | Get all orders that were shipped to the provided location     |
+| cost       | float  | Get all orders that are greater than or equal to the cost     |
 
-A blue button should appear to click: *Make Public*,
+The API response should contain meta data about the filters used and the number of results returned, and should take the structure below.
 
-Another blue button should appear to click: *Open Browser*.
+```json
+{
+    "results": 3, // the number of filtered orders
+    "filters": {}, // the filters that were used
+    "orders": [
+        // the filtered orders
+    ]
+}
+```
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+### Bonus
 
-A blue button should appear to click: *Make Public*,
+- Feel free to add additional GET parameters that you think would be useful to filter the orders on and please document how these parameters can be tested.
+- Dockerise this application.
+- Demonstrate sensible logging.
 
-Another blue button should appear to click: *Open Browser*.
+### Testing
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-## Updates Since The Instructional Video
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
---------
-
-Happy coding!
+For testing your implementation we will be using `curl` commands such as.
+```bash
+curl localhost:5000/api/orders?currency=GBP&shipped_to=Essex&cost=150
+```
